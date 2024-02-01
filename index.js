@@ -2,9 +2,9 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.json());
+app.use(cors());
 
-app.use(express.static("react-demo-app/dist"));
+app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
