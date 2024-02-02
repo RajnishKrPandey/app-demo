@@ -26,6 +26,12 @@ let profileData = {
   skills: [],
 };
 
+let pdata = {
+  fullName: "",
+  role: "",
+  location: [],
+};
+
 app.get("/api/getProfile", (req, res) => {
   try {
     res.status(200).json(profileData);
@@ -78,6 +84,23 @@ app.post("/api/updateProfile", (req, res) => {
       bio,
       upload,
       skills,
+    };
+
+    res.status(200).json({ message: "Profile updated successfully!!" });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/api/editProfile", (req, res) => {
+  try {
+    const { fullName, role, location } = req.body;
+
+    pdata = {
+      fullName,
+      role,
+      location,
     };
 
     res.status(200).json({ message: "Profile updated successfully!!" });
